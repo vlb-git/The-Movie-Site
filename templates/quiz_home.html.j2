@@ -1,0 +1,43 @@
+{% extends "master.html.j2" %}
+{% block title %}Quiz{% endblock %}
+
+{% block head %}
+<style>
+    #footer{
+        position: relative;
+    }
+    .quizLink:hover .quizSelection{
+        box-shadow: 5px 5px 0px white;
+    }
+    .quizSelection{
+        border-style: solid;
+        border-color: white;
+        border-radius: 10px;
+        box-sizing: content-box;
+        margin: 10px;
+        padding: 10px;
+    }
+    .quizSelection p{
+        font-weight: normal;
+        color: darkgray;
+    }
+    
+</style>
+{% endblock %}
+
+{% block body %}
+    <div id="content">
+        <h1>Quiz</h1>
+    <p>Welcome to the Movie Knowledge Challenge! Put your film expertise to the test in this exciting quiz section. Dive into the world of cinema with our carefully crafted questions that cover a wide range of movie genres, eras, and trivia. Whether you're a casual moviegoer or a hardcore cinephile, there's something here for everyone. Challenge yourself to see how many questions you can answer correctly and climb the leaderboard. With new questions added regularly, there's always a new challenge waiting for you.</p>
+    {% for movieInfo in movieQuiz %}
+    <a href="/quiz/{{movieInfo[2]}}/" class="quizLink">
+        <div class="quizSelection">
+            <h3>{{movieInfo[0]}} Quiz</h3>
+            <p>{{movieInfo[1]}}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

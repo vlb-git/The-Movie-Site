@@ -1,0 +1,103 @@
+{% extends "master.html.j2" %}
+
+{% block title %} Home {% endblock %}
+
+{% block head %}
+<style>
+    body{
+        background-color: black;
+    }
+    #pageHead{
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;
+        background-attachment: fixed;
+        height:565px;
+        justify-content:center;
+        align-items: center;
+        display: flex;
+        
+        background-image: url(  {{ url_for ('static', filename='dune_background.jpg') }}  );
+    }
+    #pageHead h1{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        font-size: 100px;
+        color:white;
+        animation-name: fade_in;
+        animation-duration:1s;
+
+        font-family:fantasy;
+    }
+    #content{
+        margin-top: -160px;
+        background-color:rgba(0, 0, 0, 0.555);
+        border-width:3px;
+        border-style: solid;
+        border-color:whitesmoke;
+        color:var(--color4_text);
+        
+    }
+    #content p:first-of-type::first-letter{
+        font-size: 50px;
+    }
+    #head{
+        display:none;
+    }
+
+    @media only screen and (max-width: 634px){
+        #content{
+            margin-top: 10px;
+        }
+        /*#pageHead{
+            /*background-color: royalblue;
+            background-image:none;
+            overflow:auto;
+        }*/
+    }
+
+    @keyframes fade_in {
+        from{ opacity:0; margin-top:0;}
+        to{ opacity:1; margin-top:67px;}
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div id="pageHead">
+        <h1>Welcome to The Movie Site!</h1>
+    </div>
+
+    <div id="content">
+        <h1>Welcome to the World of Cinematic Wonder</h1>
+        <p>In a world where dreams collide with reality, where the line between hero and villain blurs, and where every moment is a heartbeat away from adventure, welcome to our movie universe. Here, stories come to life, emotions run deep, and the screen is a canvas for imagination.</p>
+        
+        <p>Movies are more than just entertainment; they are a window into the human experience. They transport us to distant lands, introduce us to unforgettable characters, and immerse us in narratives that resonate with our own lives. From the silver screen to the comfort of your home, our movies invite you to explore the depths of human emotion and the heights of human achievement.</p>
+        
+        <p>For decades, our studio has been synonymous with cinematic excellence. We have produced some of the most iconic films in history, winning awards and capturing hearts along the way. From heartwarming dramas to pulse-pounding action thrillers, our movies have stood the test of time, inspiring generations of moviegoers around the world.</p>
+        
+        <p>Step into the world of tomorrow with our latest releases. Whether you're a fan of gripping dramas, side-splitting comedies, or heart-stopping thrillers, we have something for everyone. Explore our catalog of films and discover stories that will captivate your imagination and touch your heart.</p>
+        
+        <p>Ever wondered what goes into making a blockbuster movie? Dive into the world of filmmaking with our behind-the-scenes features. From exclusive interviews with directors and actors to in-depth looks at the special effects and set design, you'll gain a new appreciation for the art of filmmaking.</p>
+        
+        <p>Movies are meant to be shared, and our community is the heart and soul of our studio. Connect with fellow movie lovers, share your thoughts and opinions, and participate in exclusive events and screenings. Whether you're a casual viewer or a die-hard fan, there's a place for you in our community.</p>
+        
+        <p>Don't miss a single moment of the action. Stay updated on our latest releases, special events, and behind-the-scenes features by subscribing to our newsletter. Be the first to know about our upcoming projects and get exclusive access to content you won't find anywhere else.</p>
+        
+        <p>Movies have the power to transport us to new worlds, evoke deep emotions, and inspire us to dream big. Join us on a journey through the world of cinema, where every frame tells a story and every moment is a masterpiece. Experience the magic of movies like never before, only at our studio.</p>
+        
+        <p>Ready to embark on a cinematic adventure? Join us today and become a part of our movie-loving community. Discover new films, connect with fellow fans, and experience the magic of storytelling in a whole new way. Welcome to our world. Welcome to the world of movies.</p>
+        
+        <p><a href="#" class="btn">Join Us Today</a></p>
+    </div>
+
+    <script>
+    window.addEventListener("resize",imageHeight);
+    window.addEventListener("load",imageHeight);
+
+    function imageHeight(event){
+        document.getElementById("pageHead").style.height = window.innerHeight;
+    }
+    </script>
+{% endblock %}

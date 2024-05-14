@@ -1,0 +1,42 @@
+{% extends "master.html.j2" %}
+
+{% block title %}Content{% endblock %}
+
+{% block head %}
+<style>
+    .contentLink:hover .contentSelection{
+        box-shadow: 5px 5px 0px white;
+        transition-duration: 200ms;
+    }
+    .contentSelection{
+        border-style: solid;
+        border-color: white;
+        background-color: var(--color3);
+        border-radius: 10px;
+        box-sizing: content-box;
+        margin: 10px;
+        padding: 10px;
+    }
+    .contentSelection p{
+        font-weight: normal;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block body%}
+
+<div id="content">
+    <h1>Content</h1>
+    {% for movie in movies %}
+    <a href="/content/{{movie[2]}}" class="contentLink">
+        <div class="contentSelection">
+            <h3>{{movie[0]}}</h3>
+            <p>{{movie[1]}}</p>
+        </div>
+    </a>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

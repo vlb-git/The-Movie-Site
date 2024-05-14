@@ -1,0 +1,42 @@
+{% extends "master.html.j2" %}
+
+{% block title %} Login Page {% endblock %}
+{% block head %}
+    <style>
+        #footer{
+            position:absolute;
+        }
+        .mainContent{
+            width:65%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            margin:auto;
+            background-color:rgba(71, 71, 255, 0.719);
+            padding:25px;
+            border-radius: 18px;
+        }
+        #content{
+            justify-content: center;
+            align-items: center;
+            display:flex;
+            background-color: #048A81;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Login Page</h1>
+    <div id="content">
+        <form action="/login/entry/" method="post">
+            <div><label for="username">Username:</label></div>
+            <div><input type="text" name="username" id="username" class="keyInput" autocomplete="off"></div>
+
+            <div><label for="passwd">Password:</label></div>
+            <div><input  type="password" name="passwd" id="passwd" class="keyInput" autocomplete="off"></div>
+
+            <div id="buttonContainer"><input type="submit" value="Log in"></div>
+            
+        </form>
+    </div>
+{% endblock %}

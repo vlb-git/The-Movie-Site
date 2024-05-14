@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='form.css')}}">
+
+        <style>
+            {{pageName}} a{
+                font-weight: bold;
+            }
+        </style>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body onresize="position_footer();" onload="position_footer();" id="documentBody">
+        <div id="head"><h1>The Movie Site</h1>
+        </div>
+        <nav id="navBar">
+            <ul>
+                <li class="navLink" id="home"><a href="/">Home</a></li>
+                <li class="navLink" id="navContent"><a href="/content/">Content</a></li>
+                <li class="navLink" id="quiz"><a href="/quiz/">Quiz</a></li>
+                {% if False %}
+                <!-- <li class="navLink" id="genere"><a href="#">Genere</a>
+                    <ul id="navdropList">
+                        <li><a href="https://google.com">Google</a></li>
+                        <li><a href="https://bing.com">Bing</a></li>
+                        <li><a href="https://bing.com">Bing</a></li>
+                        <li><a href="https://bing.com">Bing</a></li>
+                    </ul>
+                </li> -->
+                {% endif %}
+                {% if session["user"] %}
+                <li class="navLink left" id="logout"><a href="/logout/">Log out</a></li>
+                <li class="navLink left" id="profile"><a href="/dashboard/">Profile</a></li>
+                {% else %}
+                <li class="navLink left" id="signup"><a href="/signup/">Sign Up</a></li>
+                <li class="navLink left" id="login"><a href="/login/">Login</a></li>
+                {% endif %}
+                    
+            </ul>
+        </nav>
+        <div id="container">
+        {% block body %}
+        {% endblock %}
+        </div>
+        <script>
+            var transparentNav=true;
+            function displayDropList(id){
+                let dropList = document.getElementById(id+"dropList");
+                let navDrop = document.getElementById(id);
+                dropList.style.display = 'block';
+                dropList.style.left = navDrop.offsetLeft+'px';
+                dropList.style.top = navDrop.offsetHeight+'px';
+            }
+            
+            function handleBodyScroll(){
+                if (transparentNav){
+                    if (window.scrollY==0){
+                        document.getElementById("navBar").style.backgroundColor="rgb(136, 70, 187, 0)";
+
+                        document.getElementsByClass("navLink").style.backgroundColor="rgb(136, 70, 187, 0)";
+                        //document.getElementsByClass("navBar").style.backgroundColor="rgb(136, 70, 187, 0.5)";
+                    }
+                    else{
+                        document.getElementById("navBar").style.backgroundColor="rgb(136, 70, 187, 1)";
+                    }
+                }
+
+            }
+            function position_footer(){
+                //console.log("window height:"+window.innerHeight);
+                //console.log("body height:"+document.getElementById("documentBody").clientHeight);
+                if (window.innerHeight<=document.getElementById("documentBody").clientHeight){
+                    document.getElementById("footer").style.position = "relative"
+                    
+                }
+                else{
+                    document.getElementById("footer").style.position = "fixed"
+                }
+            }
+        </script>
+        <div id="footer">
+                <div><a href="https://www.google.com">Google</a></div>
+                <div><a href="https://www.google.com">Google</a></div>
+                <div><a href="https://www.google.com">Google</a></div>
+                <div><a href="https://www.google.com">Google</a></div>
+
+        </div>
+    </body>
+</html>

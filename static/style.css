@@ -1,0 +1,236 @@
+:root{
+    /*--color1:#ADFF2F; --color1_text:black;*/
+    --color1:#8846BB; --color1_text:white;
+
+    /*--color2:#2E4057; --color2_text:white;*/
+    --color2:#71BFE1; --color2_text:black;
+
+    /*--color3:#73937E; --color3_text:black;*//**/
+    --color3:#33373B; --color3_text:white;
+    
+    /*--color4:#BFACC8; --color4_text:black;*/
+    --color4:#535353; --color4_text:white;
+
+
+    /*--color5:#D74E09; --color5_text: black;*/
+    --color5:#ED254E; --color5_text: black;
+
+
+}
+html{
+    scroll-behavior: smooth;
+    
+}
+body{
+    margin:0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color:white;
+
+    scrollbar-width: 5px;
+}
+body h1{
+    color: white;
+}
+a{
+    color:white;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+a:hover{
+    color:var(--color1);
+}
+::selection{
+    background-color: var(--color1);
+    color:var(--color1_text)
+}
+
+.navLink, .navLinkDrop{
+    display: inline-flex;
+    background-color: var(--color1);
+    flex-direction: column;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    width:auto;
+    list-style-type: none;
+    margin: 0;
+    height:100%;
+    margin-left:-5px;
+}
+.navLink:first-of-type{
+    margin-left: 0;
+}
+
+
+.navLink a{
+    color:var(--color1_text);
+    list-style-type: none;
+    height:100%;
+    margin:0;
+    padding:10px;
+    transition-duration: 250ms;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: normal;
+    
+}
+#navBar ul{
+    height:100%;
+    padding: 0%;
+    margin:0px;
+    box-sizing: border-box;
+}
+.navLink a:hover, .navLink:hover, .navLink ul .navLink a{
+    color:white;
+    background-color: black;
+    
+}
+/*
+.navLink:hover .navLink a{
+    color:white;
+    background-color: black;
+}*/
+
+#navBar{
+    background-color: var(--color1);
+    color:var(--color1_text);
+    height:40px;
+    padding: 0;
+    position:sticky;
+    top:0;
+    z-index: 2;
+
+}
+
+#login, #signup, .left{
+    float: right;
+}
+
+.transparentNav{
+    background-color:var(--color1);
+}
+#content{
+    width:70%;
+    justify-content: center;
+    align-content: center;
+    text-align: left;
+    margin:auto;
+    margin-top: 50px;
+    background-color: black;
+    border-color: white;
+    border-style: solid;
+    color:var(--color4_text);
+    padding:20px;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 750px){
+    #content{
+        width:100%
+    }
+}
+
+#content h1{
+    color:var(--color4_text);
+}
+
+#container{
+    color:white;
+}
+
+/* ****** head ****** */
+#head{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--color3);
+    color: var(--color3_text);
+    height: 80px;
+    margin:auto;
+
+}
+#head h1{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    height:auto;
+    padding:auto;
+    color:var(--color3_text)
+}
+/* ****** head ****** */
+
+
+
+
+
+#navdropList{
+    display:none;
+    position: absolute;
+    width:auto;
+    height:100%;
+    min-width: 70px;
+    background-color:var(--color1);
+    list-style-type: none;
+    z-index: 2;
+    top: 38px;
+    color:white;
+    border-radius: 5px;
+}
+#genere{
+    height:auto;
+}
+#navdropList li{
+    height:100%;
+    width:100%;
+    padding:0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--color1);
+    transition-duration: 0ms;
+}
+#navdropList li a{
+    width:100%;
+    padding:0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+#navdropList li:hover{
+    height:100%;
+    width:100%;
+}
+#genere:hover #navdropList{
+    display: inline;
+    border-radius: 18px;
+    box-shadow: 10px 10px 100% 100% black;
+}
+
+/* ****** footer ****** */
+#footer{
+    margin-top:20px;
+    border-top: 1px solid #eee;
+    background-color: black;
+    width:100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    color:white;
+    bottom:0;
+    left:0;
+    box-sizing: border-box;
+}
+
+#footer div{
+    list-style-type: none;
+    text-align: center;
+    padding:20px;
+}
+
+/* ****** footer ****** */

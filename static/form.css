@@ -1,0 +1,59 @@
+input[type="submit"], input[type="reset"]{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: inherit;
+    padding-left: 14px;
+    padding-right: 14px;
+    background-color: black;
+    color: white;
+    border-style: solid;
+    border-color: white;
+    font-weight: bold;
+    margin-left: 30px;
+}
+input[type="submit"]:hover, input[type="reset"]:hover{
+    background-color: var(--color1);
+    color:black;
+    cursor: pointer;
+}
+input[type="submit"]:active, input[type="reset"]:active{
+    background-color: white;
+    color:black;
+}
+
+label{
+    color:black;
+    font-size: 20px;
+}
+.keyInput{
+    height: 30px;
+    width: 100%;
+    font-size: 20px;
+    justify-content: right;
+    align-items: right;
+    border-radius: 10px;
+}
+
+form{
+    display: grid;
+    grid-template-columns: auto auto;
+    width:50%;
+    align-self: center;
+    margin: auto;
+}
+
+#buttonContainer{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-content: center;
+    align-items: center;
+    padding-top:30px;
+    display: flex;
+}
+
+@media only screen and (max-width: 500px){
+    form{
+        width:100%;
+        margin-left: 0;
+    }
+}

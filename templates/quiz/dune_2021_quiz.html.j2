@@ -1,0 +1,21 @@
+{% extends "quiz/quiz_template.html.j2" %}
+
+{% block head %}
+<style>
+    label{
+        color: white;
+    }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<h1>{{movieName}}</h1>
+<div class="content">
+<form>
+    <div class="quizQuestion">
+        <label for="q1">Q1</label>
+    </div>
+</form>
+</div>
+{% endblock %}

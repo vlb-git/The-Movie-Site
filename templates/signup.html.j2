@@ -1,0 +1,85 @@
+{% extends "master.html.j2" %}
+
+{% block title %} Sign Up Page {% endblock %}
+
+{% block head %}
+<style>
+    
+    .mainContent{
+        width:65%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin:auto;
+        background-color:rgba(71, 71, 255, 0.719);
+        padding:25px;
+        border-radius: 18px;
+    }
+    #content{
+        justify-content: center;
+        align-items: center;
+        display:flex;
+        background-color: #048A81;
+    }
+    #footer{
+        position: fixed;
+    }
+    #errorBox{
+        display:none;
+    }
+
+</style>
+{% endblock %}
+
+{% block body %}
+    <h1>Sign Up Page</h1>
+    <div id="content">
+        <form action="entry", method="post">
+            <div><label for="username">Username:</label></div>
+            <div><input type="text" class="keyInput" placeholder="John Connor" name="username" id="username" autocomplete="off"></div>
+            
+
+            <div><label for="email">Email:</label></div>
+            <div><input type="email" name="email" id="email" class="keyInput" autocomplete="off"></div>
+
+            
+            <div><label for="passwd">Password:</label></div>
+            <div><input type="password" name="passwd" id="passwd" class="keyInput" onchange="checkPass();" autocomplete="off"></div>
+
+            <div><label for="passwdCon">Confirm Password:</label></div>
+            <div>
+                <input type="password" name="passwdCon" id="passwdCon" class="keyInput"  onchange="checkPass();" autocomplete="off">
+                <p id="errorBox">Your Passwords need to match!</p>
+
+            </div>
+            
+
+            <div><label for="dob">Date of Birth:</label></div>
+            <div><input type="date" name="dob" id="dob" class="keyInput"></div>
+
+            <div id="buttonContainer"><input id="submit" type="submit" value="Submit">
+            <input type="reset" value="Clear"></div>
+        </form>
+    </div>
+    <p>{{ session }}</p>
+    <script>
+    function checkPass(){
+        passwd = document.getElementById("passwd");
+        passwdCon = document.getElementById("passwdCon");
+        submit = document.getElementById("submit");
+        errbox = document.getElementById("errorBox");
+        footer = document.getElementById("footer");
+
+        if (passwd.value != passwdCon.value){
+            submit.disabled = true;
+            errbox.style.display = "block";
+            footer.style.position = "relative";
+        }
+        else{
+            submit.disabled = false;
+            errbox.style.display = "none";
+            footer.style.position = "fixed";
+        }
+    }
+    </script>
+{% endblock %}

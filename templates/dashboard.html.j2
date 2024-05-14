@@ -1,0 +1,26 @@
+{% extends "master.html.j2" %}
+
+{% block title %}{{ session["user"][1] }} Dashboard{% endblock %}
+
+{% block body %}
+<h1>Hello, {{ session["user"][1] }}. Welcome to your Dashboard!</h1>
+
+<table border="1">
+    <tr>
+        <th>Username</th>
+        <td>{{session["user"][1]}}</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>{{session["user"][2]}}</td>
+    </tr>
+
+    <tr>
+        <th>Date of Birth</th>
+        <td>{{session["user"][3]}}</td>
+    </tr>
+
+</table>
+
+{% endblock %}
