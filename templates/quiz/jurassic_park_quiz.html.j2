@@ -1,0 +1,55 @@
+{% extends "quiz/quiz_template.html.j2" %}
+
+{% block head %}
+<style>
+    label{
+        color: white;
+    }
+    .question{
+        border:solid;
+        border-color: white;
+        border-radius: 16px;
+        padding: 10px;
+        margin-top: 10px;
+        box-sizing: content-box;
+    }
+    input[type="submit"]{
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% set questions = [
+    [1, "Who directed the movie Jurassic Park?", ["A) Steven Spielberg", "B) James Cameron", "C) George Lucas", "D) Ridley Scott"], "A) Steven Spielberg"],
+    [2, "What is the name of the billionaire who creates Jurassic Park?", ["A) John Hammond", "B) Alan Grant", "C) Ian Malcolm", "D) Robert Muldoon"], "A) John Hammond"],
+    [3, "Which island is Jurassic Park located on?", ["A) Isla Sorna", "B) Isla Nublar", "C) Isla Nublar II", "D) Isla Matanceros"], "B) Isla Nublar"],
+    [4, "What type of dinosaur is the first one seen by the visitors when they enter the park?", ["A) Tyrannosaurus Rex", "B) Velociraptor", "C) Brachiosaurus", "D) Triceratops"], "C) Brachiosaurus"],
+    [5, "Which character is a mathematician and chaos theorist?", ["A) Alan Grant", "B) Ellie Sattler", "C) Ian Malcolm", "D) Donald Gennaro"], "C) Ian Malcolm"],
+    [6, "What is the name of the game warden who tries to capture the Velociraptors?", ["A) Dennis Nedry", "B) Ray Arnold", "C) Donald Gennaro", "D) Robert Muldoon"], "D) Robert Muldoon"],
+    [7, "What does Dennis Nedry do to the park's security system?", ["A) Fixes it", "B) Hacks it to steal embryos", "C) Enhances it", "D) Shuts it down accidentally"], "B) Hacks it to steal embryos"],
+    [8, "Which dinosaur kills Dennis Nedry?", ["A) Tyrannosaurus Rex", "B) Velociraptor", "C) Dilophosaurus", "D) Spinosaurus"], "C) Dilophosaurus"],
+    [9, "Who plays the character Dr. Alan Grant?", ["A) Jeff Goldblum", "B) Sam Neill", "C) Richard Attenborough", "D) Wayne Knight"], "B) Sam Neill"],
+    [10, "What is the name of John Hammond's grandchildren?", ["A) Tim and Lex", "B) Tim and Sarah", "C) Lex and Kelly", "D) Sarah and Kelly"], "A) Tim and Lex"]
+]
+%}
+{% block body %}
+<h1>{{movieName}} Quiz</h1>
+<div class="content">
+<form>
+    <div class="quizQuestion">
+        {% for q in questions %}
+            <div class="question">
+                <h3>{{q[0]}}. {{q[1]}}</h3>
+                {% for answ in q[2] %}
+                {% set answIndex = q[2].index(answ) %}
+                <input type="radio" name="q{{q[0]}}" id="q{{q[0]}}a{{answIndex+1}}" value="{{q[2][answIndex]}}"></radio><label for="q{{q[0]}}a{{answIndex+1}}">{{q[2][answIndex]}}</label><br>
+                {% endfor %}
+                
+            </div>
+        {% endfor %}
+        
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
+{% endblock %}

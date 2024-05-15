@@ -1,0 +1,55 @@
+{% extends "quiz/quiz_template.html.j2" %}
+
+{% block head %}
+<style>
+    label{
+        color: white;
+    }
+    .question{
+        border:solid;
+        border-color: white;
+        border-radius: 16px;
+        padding: 10px;
+        margin-top: 10px;
+        box-sizing: content-box;
+    }
+    input[type="submit"]{
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% set questions = [
+    [1, "Who directed the movie Inception?", ["A) Christopher Nolan", "B) Steven Spielberg", "C) James Cameron", "D) Martin Scorsese"], "A) Christopher Nolan"],
+    [2, "Who plays the character Dom Cobb in Inception?", ["A) Leonardo DiCaprio", "B) Joseph Gordon-Levitt", "C) Tom Hardy", "D) Cillian Murphy"], "A) Leonardo DiCaprio"],
+    [3, "What is the main objective of the characters in Inception?", ["A) To steal secrets", "B) To plant an idea", "C) To rescue someone", "D) To find treasure"], "B) To plant an idea"],
+    [4, "Which character is an architect of dreams in Inception?", ["A) Dom Cobb", "B) Arthur", "C) Ariadne", "D) Eames"], "C) Ariadne"],
+    [5, "What is the term used for the process of entering someone’s dream in Inception?", ["A) Dreamwalking", "B) Dreamweaving", "C) Extraction", "D) Inception"], "D) Inception"],
+    [6, "What is the name of Dom Cobb's deceased wife?", ["A) Mal", "B) Ariadne", "C) Saito", "D) Fischer"], "A) Mal"],
+    [7, "Which item does Dom Cobb use as his totem to distinguish between dreams and reality?", ["A) A spinning top", "B) A dice", "C) A chess piece", "D) A coin"], "A) A spinning top"],
+    [8, "What role does Joseph Gordon-Levitt's character Arthur play in the team?", ["A) The Forger", "B) The Point Man", "C) The Chemist", "D) The Tourist"], "B) The Point Man"],
+    [9, "Which actor plays the character Eames, known for his ability to forge identities?", ["A) Tom Hardy", "B) Michael Caine", "C) Ken Watanabe", "D) Cillian Murphy"], "A) Tom Hardy"],
+    [10, "In Inception, what is the target's name whose mind they are trying to infiltrate?", ["A) Robert Fischer", "B) Saito", "C) Maurice Fischer", "D) Nash"], "A) Robert Fischer"]
+] 
+%}
+{% block body %}
+<h1>{{movieName}} Quiz</h1>
+<div class="content">
+<form>
+    <div class="quizQuestion">
+        {% for q in questions %}
+            <div class="question">
+                <h3>{{q[0]}}. {{q[1]}}</h3>
+                {% for answ in q[2] %}
+                {% set answIndex = q[2].index(answ) %}
+                <input type="radio" name="q{{q[0]}}" id="q{{q[0]}}a{{answIndex+1}}" value="{{q[2][answIndex]}}"></radio><label for="q{{q[0]}}a{{answIndex+1}}">{{q[2][answIndex]}}</label><br>
+                {% endfor %}
+                
+            </div>
+        {% endfor %}
+        
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
+{% endblock %}
