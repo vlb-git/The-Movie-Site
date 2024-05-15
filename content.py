@@ -9,6 +9,17 @@ table structure
 
 pathName    title    description     
 '''
+'''
+Questions Table
+
+answer(s) format
+MCQ: a1,a2,a3,a4:<correct answer>
+short: <correct answer>
+
+Question    | question_type    | answer(s)
+Question 1  | MCQ              | a1, a2, a3, a4 : a2
+Question 2  | short            | answer
+'''
 class Content():
     def __init__(self):
         self.executeSQL(""" CREATE TABLE IF NOT EXISTS content (

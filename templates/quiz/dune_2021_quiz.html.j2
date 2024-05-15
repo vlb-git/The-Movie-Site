@@ -5,6 +5,17 @@
     label{
         color: white;
     }
+    .question{
+        border:solid;
+        border-color: white;
+        border-radius: 16px;
+        padding: 10px;
+        margin-top: 10px;
+        box-sizing: content-box;
+    }
+    input[type="submit"]{
+        margin-top: 10px;
+    }
 </style>
 {% endblock %}
 
@@ -14,7 +25,78 @@
 <div class="content">
 <form>
     <div class="quizQuestion">
-        <label for="q1">Q1</label>
+        <div class="question">
+            <h3>1. What is the name of the desert planet in Dune?</h3>
+            <input type="radio" name="q1" id="q1a1" value="arakis"></radio><label for="q1a1">Arakis</label><br>
+            <input type="radio" name="q1" id="q1a2" value="pandora"></radio><label for="q1a2">Pandora</label><br>
+            <input type="radio" name="q1" id="q1a3" value="caladan"></radio><label for="q1a3">Caladan</label><br>
+            <input type="radio" name="q1" id="q1a4" value="gedi-prime"></radio><label for="q1a4">Gedi-Prime</label><br>
+        </div>
+        <div class="question">
+            <h3>2. Who is the main protagonist of Dune Part 1?</h3>
+            <input type="radio" name="q2" id="q2a1" value="leto_atreides"></radio><label for="q2a1">Leto Atreides</label><br>
+            <input type="radio" name="q2" id="q2a2" value="jessica_atreides"></radio><label for="q2a2">Jessica Atreides</label><br>
+            <input type="radio" name="q2" id="q2a3" value="paul_atreides"></radio><label for="q2a3">Paul Atreides</label><br>
+            <input type="radio" name="q2" id="q2a4" value="vladimir_baron_harkonin"></radio><label for="q2a4">Vladimir Baron Harkonin</label><br>
+        </div>
+        <div class="question">
+            <h3>3. What is the name of the powerful drug in Dune that enhances human abilities?</h3>
+            <input type="radio" name="q3" id="q3a1" value="spice"></radio><label for="q3a1">Spice</label><br>
+            <input type="radio" name="q3" id="q3a2" value="lisan_al_gaib"></radio><label for="q3a2">Lisan Al Gaib</label><br>
+            <input type="radio" name="q3" id="q3a3" value="dune"></radio><label for="q3a3">Dune</label><br>
+            <input type="radio" name="q3" id="q3a4" value="shai_hulud"></radio><label for="q3a4">Shai-Hulud</label><br>
+        </div>
+        <div class="question">
+            <h3>4. Who is the leader of the Fremen, the native people of Arrakis?</h3>
+            <input type="radio" name="q4" id="q4a1" value="paul_atreidis"></radio><label for="q4a1">Paul Atreides</label><br>
+            <input type="radio" name="q4" id="q4a2" value="lisan_al_gaib"></radio><label for="q4a2">Lisan Al Gaib</label><br>
+            <input type="radio" name="q4" id="q4a3" value="stilgar"></radio><label for="q4a3">Stilgar</label><br>
+            <input type="radio" name="q4" id="q4a4" value="shai_hulud"></radio><label for="q4a4">Shai-Hulud</label><br>
+        </div>
+        <div class="question">
+            <h3>5. What is the name of the giant sandworms in Dune?</h3>
+            <input type="radio" name="q5" id="q5a1" value="rabban_Harkonin"></radio><label for="q5a1">Rabban Harkonin</label><br>
+            <input type="radio" name="q5" id="q5a2" value="lisan_al_gaib"></radio><label for="q5a2">Lisan Al Gaib</label><br>
+            <input type="radio" name="q5" id="q5a3" value="stilgar"></radio><label for="q5a3">Stilgar</label><br>
+            <input type="radio" name="q5" id="q5a4" value="shai_hulud"></radio><label for="q5a4">Shai-Hulud</label><br>
+        </div>
+        <div class="question">
+            <h3>6. Which noble House does The protagonist of this movie belong to?</h3>
+            <input type="radio" name="q6" id="q6a1" value="house_harkonin"></radio><label for="q6a1">House Harkonin</label><br>
+            <input type="radio" name="q6" id="q6a2" value="house_atreides"></radio><label for="q6a2">House Atreides</label><br>
+            <input type="radio" name="q6" id="q6a3" value="house_padishah"></radio><label for="q6a3">House Padishah</label><br>
+            <input type="radio" name="q6" id="q6a4" value="not_mentioned"></radio><label for="q6a4">Not Mentioned</label><br>
+        </div>
+        <div class="question">
+            <h3>7. Who is the primary antagonist in Dune Part 1?</h3>
+            <input type="radio" name="q7" id="q7a1" value="rabban_harkonin"></radio><label for="q7a1">Rabban Harkonin</label><br>
+            <input type="radio" name="q7" id="q7a2" value="the_emperor"></radio><label for="q7a2">The Emperor</label><br>
+            <input type="radio" name="q7" id="q7a3" value="baron_vladimir_harkonin"></radio><label for="q7a3">Baron Vladimir Harkonin</label><br>
+            <input type="radio" name="q7" id="q7a4" value="feyd-rautha_harkonin"></radio><label for="q7a4">Feyd-Rautha Harkonin</label><br>
+        </div>
+        <div class="question">
+            <h3>8. What is the name of the order of women with psychic abilities in Dune?</h3>
+            <input type="radio" name="q8" id="q8a1" value="bene_gesserit"></radio><label for="q8a1">Bene Gesserit</label><br>
+            <input type="radio" name="q8" id="q8a2" value="shai-hulud"></radio><label for="q8a2">Shai Hulud</label><br>
+            <input type="radio" name="q8" id="q8a3" value="gedi-prime"></radio><label for="q8a3">Gedi Prime</label><br>
+            <input type="radio" name="q8" id="q8a4" value="order_of_mars"></radio><label for="q8a4">Order of Mars</label><br>
+        </div>
+        <div class="question">
+            <h3>9. Who is the author of the Dune series?</h3>
+            <input type="radio" name="q9" id="q9a1" value="j.k.rowling"></radio><label for="q9a1">J.K. Rowling</label><br>
+            <input type="radio" name="q9" id="q9a2" value="frank_herbert"></radio><label for="q9a2">Frank Herbert</label><br>
+            <input type="radio" name="q9" id="q9a3" value="it_had_multiple_authors"></radio><label for="q9a3">It had Multiple authors</label><br>
+            <input type="radio" name="q9" id="q9a4" value="rick_riordan"></radio><label for="q9a4">Rick Riordan</label><br>
+        </div>
+        <div class="question">
+            <h3>10. What is the name of the personal force field shields used by individuals in Dune to protect against physical harm?</h3>
+            <input type="radio" name="q10" id="q10a1" value="shielding_devices"></radio><label for="q10a1">Shielding devices</label><br>
+            <input type="radio" name="q10" id="q10a2" value="energy_barriers"></radio><label for="q10a2">Energy barriers</label><br>
+            <input type="radio" name="q10" id="q10a3" value="deflector_screens"></radio><label for="q10a3">Deflector screens</label><br>
+            <input type="radio" name="q10" id="q10a4" value="holtzman_shields"></radio><label for="q10a4">Holtzman shields</label><br>
+        </div>
+
+        <input type="submit" value="Submit">
     </div>
 </form>
 </div>
