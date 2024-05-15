@@ -103,12 +103,12 @@ def quiz(movie):
     movieList = c.fetchContent(movie)
 
     if movieList:
-        #try:
-        print("quiz Page")
-        return render_template(f"quiz/{movie}_quiz.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", status=status)
-        #except Exception as e:
-        #    print(e)
-        #    return render_template(f"quiz/Default_Quiz_Page.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", status=status)
+        try:
+            print("quiz Page")
+            return render_template(f"quiz/{movie}_quiz.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", status=status)
+        except Exception as e:
+            print(e)
+            return render_template(f"quiz/Default_Quiz_Page.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", status=status)
     else:
         return redirect("/")
 
