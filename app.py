@@ -1,5 +1,6 @@
 from flask import *
 import hashlib
+import sqlite3
 
 import content as contentManager
 import users as Users
@@ -15,6 +16,26 @@ moviesList={
     "dune_2024":["Dune part 2 (2024)", "Description for Dune part 2"],
     "jurassic_park":["Jurassic Park", "Description for Jurassic Park"]
     }
+def executeSQL(sql, extraValues=(), fetch=False):
+    conn=sqlite3.connect("data/data.db")
+    rows=None
+    if not fetch:
+        if not extraValues:
+            conn.execute(sql)
+        else:
+            conn.execute(sql,extraValues)
+        conn.commit()
+        
+    else:
+        cur = conn.cursor()
+        if not extraValues:
+            cur.execute(sql)
+        else:
+            cur.execute(sql,extraValues)
+        rows = cur.fetchall()
+    conn.close()
+    return rows
+
 def returnMovieName(List):
     return List[0]
 def returnContentDescription(List):
@@ -22,6 +43,9 @@ def returnContentDescription(List):
 
 def encrypt(password):# changed for encryption
     return password
+def questionsList(movieName):
+    return executeSQL("SELECT * FROM quiz_questions WHERE movie_name=?",extraValues=(movieName,), fetch=True)
+
 
 @app.route("/")
 def index():
@@ -102,12 +126,13 @@ def quiz(movie):
 
     movieList = c.fetchContent(movie)
 
+    questions = questionsList(movie)
+
     if movieList:
-        try:
+        if(len(questions)>0):
             print("quiz Page")
-            return render_template(f"quiz/{movie}_quiz.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", status=status)
-        except Exception as e:
-            print(e)
+            return render_template(f"quiz/quiz_page.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", questions=questions, status=status)
+        else:
             return render_template(f"quiz/Default_Quiz_Page.html.j2",link=f"{movie}",pageName='#quiz',movieName=f"{movieList[0][1]}", status=status)
     else:
         return redirect("/")

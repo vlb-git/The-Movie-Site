@@ -1,0 +1,48 @@
+{% extends "quiz/quiz_template.html.j2" %}
+
+{% block head %}
+<style>
+    label{
+        color: white;
+    }
+    .question{
+        border:solid;
+        border-color: white;
+        border-radius: 16px;
+        padding: 10px;
+        margin-top: 10px;
+        box-sizing: content-box;
+    }
+    input[type="submit"]{
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<h1>{{movieName}} Quiz</h1>
+<div class="content">
+<form>
+    <div class="quizQuestion">
+        {% for q in questions %}
+            <div class="question">
+                <h3>{{q[1]}}. {{q[2]}}</h3>
+                {% if q[3]=="mcq" %}
+                    {% set qList = q[4].split(",") %}
+                    
+                    {% for answ in qList %}
+                        {% set answIndex = qList.index(answ) %}
+                        {{answIndex+1}}. <input type="radio" name="q{{q[1]}}" id="q{{q[1]}}a{{answIndex+1}}" value="{{qList[answIndex]}}"></radio><label for="q{{q[1]}}a{{answIndex+1}}">{{qList[answIndex]}}</label><br>
+                    {% endfor %}
+                    
+                {% endif %}
+                
+            </div>
+        {% endfor %}
+        
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
+{% endblock %}
