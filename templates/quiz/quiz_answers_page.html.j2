@@ -1,0 +1,68 @@
+{% extends "quiz/quiz_template.html.j2" %}
+
+{% block head %}
+<style>
+    label{
+        color: white;
+    }
+    .question{
+        border:solid;
+        border-color: white;
+        border-radius: 16px;
+        padding: 10px;
+        margin-top: 10px;
+        box-sizing: content-box;
+    }
+    input[type="submit"]{
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<h1>{{movieName}} Quiz</h1>
+<div class="content">
+<h3>Your Score is {{score}}/10</h3>
+<progress value="{{score}}" max="10">{{score}}</progress>
+<form action="submit/" method="post" target="_blank">
+    <div class="quizQuestion">
+        {% for q in questions %}
+            <div class="question">
+                <h3>{{q[1]}}. {{q[2]}}</h3>
+                {% if q[3]=="mcq" %}
+                    {% set qList = q[4].split(",") %}
+                    
+                    {% for answ in qList %}
+                        {% set answIndex = qList.index(answ) %}
+                        
+                        {% if qList[answIndex]==correctAnswers[q[1]-1] %}
+                        {{answIndex+1}}. <input type="radio" name="q{{q[1]}}" id="q{{q[1]}}a{{answIndex+1}}" value="{{qList[answIndex]}}" disabled="true" selected></radio><label style="color:green" for="q{{q[1]}}a{{answIndex+1}}">{{qList[answIndex]}}</label><br>
+                        {% elif qList[answIndex]==answers[q[1]-1] %}
+                        {{answIndex+1}}. <input type="radio" name="q{{q[1]}}" id="q{{q[1]}}a{{answIndex+1}}" value="{{qList[answIndex]}}" disabled="true"></radio><label style="color:red" for="q{{q[1]}}a{{answIndex+1}}">{{qList[answIndex]}}</label><br>
+                        {% else %}
+                        {{answIndex+1}}. <input type="radio" name="q{{q[1]}}" id="q{{q[1]}}a{{answIndex+1}}" value="{{qList[answIndex]}}" disabled="true"></radio><label for="q{{q[1]}}a{{answIndex+1}}">{{qList[answIndex]}}</label><br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <input type="submit" value="Submit">
+    </div>
+</form>
+{#
+<script>
+var selectedAnswers = {{answers}}
+var correctAnswers = {{correctAnswers}}
+for(int i=0;i<10;i++){
+    let answerOption = document.querySelector(`[name="q{i+1}"][value="{selectedAnswers[i]}"]`);
+    answerOption.style.color = "red";
+
+    let correctOption = document.querySelector(`[name="q{i+1}"][value="{correctAnswers[i]}"]`);
+    answerOption.style.color = "green";
+}
+</script>
+#}
+</div>
+{% endblock %}

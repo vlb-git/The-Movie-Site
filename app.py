@@ -11,11 +11,7 @@ hash_object = hashlib.sha256()
 app = Flask(__name__)
 
 app.secret_key="BAS_SECRET_KEY"
-moviesList={
-    "dune_2021":["Dune part 1 (2021)", "Description for Dune part 1"],
-    "dune_2024":["Dune part 2 (2024)", "Description for Dune part 2"],
-    "jurassic_park":["Jurassic Park", "Description for Jurassic Park"]
-    }
+
 def executeSQL(sql, extraValues=(), fetch=False):
     conn=sqlite3.connect("data/data.db")
     rows=None
@@ -137,6 +133,27 @@ def quiz(movie):
     else:
         return redirect("/")
 
+@app.route("/quiz/<movie>/submit/", methods=["POST"])
+def quizEntry(movie):
+    questions = questionsList(movie)
+    answers=[]
+    correctAnswers=[]
+    score = 0
+    if len(questions)==0:
+        return "This movie does not exist"
+    if request.method=="POST":
+        print(request.form)
+        for i in range(10):
+            answer = request.form[f"q{i+1}"]
+            answers.append(answer)
+            correctAnswers.append(questions[i][5])
+            if answer==questions[i][5]:
+                score+=1
+
+        
+        return render_template("quiz/quiz_answers_page.html.j2", answers = answers, correctAnswers = correctAnswers, questions=questions, score=score) 
+
+
 @app.route("/content/")
 def content_home():
     status = {"Logged In":False}
@@ -161,6 +178,11 @@ def theContentPage(movie):
             return render_template(f"content/Default_Page.html.j2",link=f"{movie}",pageName='#navContent',movieName=f"{movieList[0][1]}", status=status)
     else:
         return redirect("/")
-
+def test_page_function():
+    print(render_template("home.html.j2"))
+    return render_template("home.html.j2")
+@app.route("/test/")
+def testPage():
+    return test_page_function()
 if __name__=="__main__":
-    app.run()
+    app.run(host="0.0.0.0", debug=True)

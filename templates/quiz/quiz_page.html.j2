@@ -23,7 +23,7 @@
 {% block body %}
 <h1>{{movieName}} Quiz</h1>
 <div class="content">
-<form>
+<form action="submit/" method="post" target="_blank">
     <div class="quizQuestion">
         {% for q in questions %}
             <div class="question">
